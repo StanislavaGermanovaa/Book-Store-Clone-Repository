@@ -1,7 +1,6 @@
 package bg.sofuni.bookstore.bookstore_books.model.entity;
 
 
-import bg.sofuni.bookstore.bookstore_books.model.enums.CategoryType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,12 +12,13 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class Category{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Enumerated(EnumType.STRING)
-    private CategoryType name;
+    @Column(nullable = false,unique = true)
+    private String name;
 
     @Column(columnDefinition = "TEXT")
     private String description;
