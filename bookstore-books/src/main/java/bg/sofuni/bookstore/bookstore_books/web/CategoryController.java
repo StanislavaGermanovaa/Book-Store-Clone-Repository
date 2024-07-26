@@ -51,5 +51,11 @@ public class CategoryController {
                 .ok(categoryService.getCategoryById(id));
     }
 
+    @GetMapping("/name/{name}")
+    public ResponseEntity<CategoryDTO> getByName(@PathVariable("name") String name) {
+        return ResponseEntity
+                .ok(categoryService.getCategoryByName(name));
+    }
+
 
 }

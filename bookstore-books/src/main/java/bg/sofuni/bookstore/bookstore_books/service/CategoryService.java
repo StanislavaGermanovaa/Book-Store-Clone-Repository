@@ -27,6 +27,7 @@ public class CategoryService {
         return categoryRepository.findAll().stream()
                 .map(book -> modelMapper.map(book, CategoryDTO.class))
                 .collect(Collectors.toList());
+
     }
 
     public void addCategory(AddCategoryDTO addCategoryDTO) {
@@ -43,5 +44,13 @@ public class CategoryService {
                 .findById(id)
                 .map(book -> modelMapper.map(book, CategoryDTO.class))
                 .orElseThrow(()->new IllegalArgumentException("Not found!"));
+    }
+
+    public CategoryDTO getCategoryByName(String name) {
+
+        return categoryRepository
+                .findByCategory(name)
+                .map(category -> modelMapper.map(category, CategoryDTO.class))
+                .orElseThrow(() -> new IllegalArgumentException("Category not found"));
     }
 }

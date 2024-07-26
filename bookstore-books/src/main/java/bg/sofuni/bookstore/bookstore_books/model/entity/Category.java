@@ -18,7 +18,7 @@ public class Category{
     private Long id;
 
     @Column(nullable = false,unique = true)
-    private String name;
+    private String category;
 
     @Column(columnDefinition = "TEXT")
     private String description;
